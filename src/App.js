@@ -3,19 +3,21 @@ import React, { createRef, useEffect, useMemo, useState } from 'react';
 import './App.css';
 import SVGShape from './components/svg-shape';
 import { sections } from './config';
+import { useDocumentHeight } from './hooks/use-document-height';
 import { useWindowSize } from './hooks/use-window-size';
 
 function App() {
   const refs= useMemo(() => sections.map(() => createRef()), []);
   const [scrollY, setScrollY] = useState(0);
   const [sectionHeights, setSectionHeights] = useState([]);
-  const [width, height] = useWindowSize();
+  const [windowWidth, windowHeight] = useWindowSize();
+  const docHeight = useDocumentHeight();
 
   useScrollPosition(({ currPos }) => setScrollY(- currPos.y), []);
   useEffect(() => {
     const sectionHeights = refs.map(ref => ref.current.offsetHeight);
     setSectionHeights(sectionHeights);
-  }, [refs, width, height]);
+  }, [refs, windowWidth, windowHeight, docHeight]);
 
   return (
     <div>
