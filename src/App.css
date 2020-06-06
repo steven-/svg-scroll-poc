@@ -8,12 +8,6 @@ svg {
   width: 100vw;
   height:100vh;
 }
-svg path {
-  /* transform: translate(100px, 100px) scale(.5); */
-
-}
-
-/* *************************** */
 
 main {
   position: relative;
@@ -31,5 +25,3 @@ h1 {
   margin: 0;
   padding: 1em;
 }
-
-

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { shapes } from '../config';
 
 
-const pathConfigs = shapes.map(({ path, yOffset }) => {
+const pathConfigs = shapes.map(({ path }) => {
   return path.split(/M|C|L|Z/)
                       .map(s => s.trim())
                       .filter(Boolean)
@@ -29,16 +29,6 @@ const computePathString = (pathFrom, pathTo, progress) => {
     L${p(6, 0, 0)},${p(6, 0, 1)}
     L${p(7, 0, 0)},${p(7, 0, 1)} Z
   `.split(/\n/).filter(Boolean).join(' ');
-//   return `
-//   M${p(0, 0, 0)},${p(0, 0, 1)}
-//   C${p(1, 0, 0)},${p(1, 0, 1)} ${p(1, 1, 0)},${p(1, 1, 1)} ${p(1, 2, 0)},${p(1, 2, 1)}
-//   C${p(2, 0, 0)},${p(2, 0, 1)} ${p(2, 1, 0)},${p(2, 1, 1)} ${p(2, 2, 0)},${p(2, 2, 1)}
-//   C${p(3, 0, 0)},${p(3, 0, 1)} ${p(3, 1, 0)},${p(3, 1, 1)} ${p(3, 2, 0)},${p(3, 2, 1)}
-//   C${p(4, 0, 0)},${p(4, 0, 1)} ${p(4, 1, 0)},${p(4, 1, 1)} ${p(4, 2, 0)},${p(4, 2, 1)}
-//   C${p(5, 0, 0)},${p(5, 0, 1)} ${p(5, 1, 0)},${p(5, 1, 1)} ${p(5, 2, 0)},${p(5, 2, 1)}
-//   C${p(6, 0, 0)},${p(6, 0, 1)} ${p(6, 1, 0)},${p(6, 1, 1)} ${p(6, 2, 0)},${p(6, 2, 1)}
-//   C${p(7, 0, 0)},${p(7, 0, 1)} ${p(7, 1, 0)},${p(7, 1, 1)} ${p(7, 2, 0)},${p(7, 2, 1)}
-// `.split(/\n/).filter(Boolean).join(' ');
 };
 
 const computeColor = (colorFrom, colorTo, progress) => {
